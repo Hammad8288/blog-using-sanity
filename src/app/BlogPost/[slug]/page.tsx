@@ -3,11 +3,9 @@ import React from "react";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
-interface BlogPostProps {
-  params: { slug: string };
-}
 
-const BlogPost = async ({ params }: BlogPostProps) => {
+
+const BlogPost = async ({ params }: { params : {slug : string}}) => {
   const { slug } = params; 
 
   const query = `*[_type == "blog" && slug.current == $slug][0] {
