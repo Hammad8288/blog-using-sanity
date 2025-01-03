@@ -2,7 +2,13 @@ import { client } from "@/sanity/lib/client";
 import React from "react";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-
+interface fullBlog {
+  title: string;
+  content: any;
+  imageUrl: string;
+  author: { authorname: string; authorimage: string } | null;
+  _id: string;
+}
 async function getData(slug: string) {
   const query = `*[_type == "blog" && slug.current == '${slug}'][0] {
     title,
@@ -16,12 +22,7 @@ async function getData(slug: string) {
 }
 
 const BlogPost = async ({ params }: { params: { slug: string } }) => {
-  const data = await getData(params.slug);
-
-  if (!data) {
-    return <div className="text-center mt-20">Post not found</div>;
-  }
-
+  const data: fullBlog = await getData(params.slug);
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{data.title}</h1>
