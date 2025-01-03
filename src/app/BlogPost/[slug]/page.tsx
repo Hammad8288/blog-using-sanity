@@ -17,9 +17,8 @@ async function getData(slug: string) {
   return data;
 }
 
-// Blog post component
-const BlogPost = async ({ params }: { params: { slug: string } }) => {
-  // Await params before accessing slug
+
+const BlogPost = async ({params}:{params: Promise<{slug:string}>}) => {
   const { slug } = await params;
 
   const data = await getData(slug);
