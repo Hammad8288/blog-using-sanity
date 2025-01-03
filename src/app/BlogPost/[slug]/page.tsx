@@ -2,31 +2,32 @@ import { client } from "@/sanity/lib/client";
 import React from "react";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-interface fullBlog {
-  title: string;
-  content: any;
-  imageUrl: string;
-  author: { authorname: string; authorimage: string } | null;
-  _id: string;
-}
+
+// Fetch data function
 async function getData(slug: string) {
-  const query = `*[_type == "blog" && slug.current == '${slug}'][0] {
+  const query = `*[_type == "blog" && slug.current == $slug][0] {
     title,
     content,
     "slug": slug.current,
     "imageUrl": image.asset->url,
-     author->{authorname, "authorimage": authorimage.asset->url}
+    author->{authorname, "authorimage": authorimage.asset->url}
   }`;
-  const data = await client.fetch(query);
+
+  const data = await client.fetch(query, { slug });
   return data;
 }
 
-export default async function blogArticle({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const data: fullBlog = await getData(params.slug);
+// Blog post component
+const BlogPost = async ({ params }: { params: { slug: string } }) => {
+  // Await params before accessing slug
+  const { slug } = await params;
+
+  const data = await getData(slug);
+
+  if (!data) {
+    return <div className="text-center mt-20">Post not found</div>;
+  }
+
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{data.title}</h1>
@@ -54,9 +55,10 @@ export default async function blogArticle({
       )}
       <br />
       <div className="text-gray-800">
-        {/* Render the Portable Text content */}
         <PortableText value={data.content} />
       </div>
     </div>
   );
-}
+};
+
+export default BlogPost;
