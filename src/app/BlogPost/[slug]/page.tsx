@@ -4,9 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
 interface BlogPostProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 const BlogPost = async ({ params }: BlogPostProps) => {
