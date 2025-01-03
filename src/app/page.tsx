@@ -9,7 +9,7 @@ const HomePage = () => {
             Welcome to <span className="text-yellow-300">My Tech Blog</span>
           </h1>
           <p className="text-lg font-light mb-8">
-            Hi, I'm <span className="font-semibold">Hammad Ahmed</span>. 
+            Hi, I am <span className="font-semibold">Hammad Ahmed</span>. 
             Join me on my journey to explore the latest advancements in technology, 
             programming tips, and exciting innovations.
           </p>

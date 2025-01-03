@@ -12,7 +12,7 @@ export default function Navbar() {
       <nav>
         <div className="flex justify-between items-center px-6 py-4 md:px-10">
           <Link href={"/"} className="font-bold text-2xl text-gray-800">
-            Hammad's Blog
+            Hammad Blog
           </Link>
           <button
             className="md:hidden"
