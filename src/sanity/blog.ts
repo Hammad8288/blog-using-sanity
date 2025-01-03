@@ -1,6 +1,6 @@
 import {defineType , defineField} from "sanity" ;
 
-export default defineType( {
+const aboutblog =defineType( {
     name : "blog",
     title : "Blog",
     type : "document",
@@ -58,3 +58,5 @@ export default defineType( {
         
     ]
 } ) ;
+
+export default aboutblog;
