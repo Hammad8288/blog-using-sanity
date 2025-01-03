@@ -21,7 +21,11 @@ async function getData(slug: string) {
   return data;
 }
 
-const BlogPost = async ({ params }: { params: { slug: string } }) => {
+export default async function blogArticle({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const data: fullBlog = await getData(params.slug);
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8">
@@ -55,6 +59,4 @@ const BlogPost = async ({ params }: { params: { slug: string } }) => {
       </div>
     </div>
   );
-};
-
-export default BlogPost;
+}
