@@ -1,6 +1,6 @@
 import { defineType , defineField } from "sanity"
 
-const aboutauthor = defineType ( {
+export default defineType ( {
     name : "author",
     title : "Author",
     type : "document",
@@ -20,5 +20,3 @@ const aboutauthor = defineType ( {
         }),
     ],
 })
-
-export default aboutauthor;

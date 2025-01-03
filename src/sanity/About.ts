@@ -1,4 +1,4 @@
-const aboutSchema = {
+export default {
     name: "about",
     title: "About",
     type: "document",
@@ -29,5 +29,3 @@ const aboutSchema = {
 
     ]
 }
-
-export default aboutSchema;
