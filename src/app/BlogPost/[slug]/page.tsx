@@ -10,7 +10,7 @@ interface BlogPostProps {
 }
 
 const BlogPost = async ({ params }: BlogPostProps) => {
-  const { slug } = await params;
+  const { slug } = params; 
 
   const query = `*[_type == "blog" && slug.current == $slug][0] {
     title,
@@ -56,7 +56,6 @@ const BlogPost = async ({ params }: BlogPostProps) => {
         {/* Render the Portable Text content */}
         <PortableText value={post.content} />
       </div>
-      
     </div>
   );
 };
